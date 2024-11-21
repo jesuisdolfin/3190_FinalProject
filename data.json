@@ -1,0 +1,92 @@
+{
+  "categories": [
+    {
+      "article": "Pants",
+      "description": "Our selection of men's pants are sure to fit your everyday needs from lounging at home to looking sharp in the office.",
+      "image1": "images/mens_pants.jpg",
+      "image2": "images/mens_pants2.jpg",
+      "image3": "images/mens_pants3.jpg",
+      "img1cap": "Chinos",
+      "img2cap": "Khakis",
+      "img3cap": "Men's Shorts",
+      "gender":"m"
+    },
+    {
+      "article": "Watches",
+      "description": "Finish off that great look and stay on top of your busy schedule with one of our designer watches.",
+      "image1": "images/mens_watch.jpg",
+      "image2": "images/mens_watch2.jpg",
+      "image3": "images/mens_watch3.jpg",
+      "img1cap": "Light Faced",
+      "img2cap": "Dark Faced",
+      "img3cap": "Kachow Faced",
+      "gender":"m"
+    },
+    {
+      "article": "Shirts",
+      "description": "Button up in one of our polyester blended shirts, or go for a more relaxed fit in our cotton tees.",
+      "image1": "images/mens_shirts.jpg",
+      "image2": "images/mens_shirts2.jpg",
+      "image3": "images/mens_shirts3.jpg",
+      "img1cap": "Neutral Dress Shirts",
+      "img2cap": "Polo Shirts",
+      "img3cap": "Color Dress Shirts",
+      "gender":"m"
+    },
+    {
+      "article": "Shoes",
+      "description": "There's no better way to start you day than to step into our one of a kind shoes with top-notch design on comfort and style.",
+      "image1": "images/mens_shoes.jpg",
+      "image2": "images/mens_shoes2.jpg",
+      "image3": "images/mens_shoes3.jpg",
+      "img1cap": "Dress Shoes",
+      "img2cap": "Men's Casual Shoes",
+      "img3cap": "Athletic Shoes",
+      "gender":"m"
+    },
+    {
+      "article": "Pants",
+      "description": "Start your projects with the right pants! Whether you're looking for jeans, skirts, or khakis- we have it all.",
+      "image1": "images/womens_pants.jpg",
+      "image2": "images/womens_pants2.jpg",
+      "image3": "images/womens_pants3.jpg",
+      "img1cap": "Dress Pants",
+      "img2cap": "Slacks",
+      "img3cap": "Women's Shorts",
+      "gender":"w"
+    },
+    {
+      "article": "Purses",
+      "description": "Strut down that street knowing you're looking your best with a complete look finished with our one of kind designer hand bags.",
+      "image1": "images/womens_purse.jpg",
+      "image2": "images/womens_purse2.jpg",
+      "image3": "images/womens_purse3.jpg",
+      "img1cap": "Neutral Pattern Purse",
+      "img2cap": "Neutral Solid Purse",
+      "img3cap": "Colored Purse",
+      "gender":"w"
+    },
+    {
+      "article": "Shirts",
+      "description": "Whatever your color, whatever your style, we have the tops in stock to get your look started, from polka dots to lace.",
+      "image1": "images/womens_shirts.jpg",
+      "image2": "images/womens_shirts2.jpg",
+      "image3": "images/womens_shirts3.jpg",
+      "img1cap": "Collared",
+      "img2cap": "Dress Shirt",
+      "img3cap": "Casual Shirt",
+      "gender":"w"
+    },
+    {
+      "article": "Shoes",
+      "description": "We know you have a lot of roles to fill, and that's why our selection of women's shoes are designed to take you wherever, whenever.",
+      "image1": "images/womens_shoes.jpg",
+      "image2": "images/womens_shoes2.jpg",
+      "image3": "images/womens_shoes3.jpg",
+      "img1cap": "Heels",
+      "img2cap": "Patterned Shoes",
+      "img3cap": "Women's Casual Shoes",
+      "gender":"w"
+    }
+  ]
+}
