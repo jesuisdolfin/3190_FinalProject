@@ -1,63 +1,11 @@
 window.onload = function() {
     showAbout();
-    let header = document.getElementById("header");
-    header.innerHTML = `
-        <ul>
-        <li><a href="#" ><button type="button" onclick="showAbout()" class="navBtn">About</button></a></li>
-        <li><a href="#" ><button type="button"  onclick="showMens()" class="navBtn">Men</button></a></li>
-        <li><a href="#" ><button type="button"  onclick="showWomens()" class="navBtn">Women</button></a></li>
-      </ul>
-      <ul>
-        <li style="margin-left: auto"> 
-        <a onclick="showCart()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-          </svg>
-        </a>
-        <ul id="items" hidden>
-        </ul>
-        </li>
-        <li>
-          <div class="container" id="loginform">
-            <button type="button" class="navBtn">Login</button>
-              <div class="content">
-                <form class="form" id="login">
-                  <div class="formInputGroup">
-                    <input type="text" class="formInput" id="username" autofocus placeholder="Username">
-                  </div>
-                  <div class="formInputGroup">
-                    <input type="password" class="formInput" id="password" placeholder="Password">
-                  </div>
-                  <button class="formButton" type="button" onclick="login()">Continue</button>
-                  <p class="formText">
-                    <button type="button" id="linkCreateAccount" onclick="signup()">Create an account</button>
-                  </p>
-              </form>
-              </div>
-          </div>
-          <div id="loggedin" hidden>
-            <p id="greeting"></p>
-          </div>
-        </li>
-      </ul>`
-      var collBtn = document.getElementsByClassName("navBtn");
-      var i;
-      for (i = 0; i < collBtn.length; i++) {
-        collBtn[i].addEventListener("click", 
-        function() {
-          this.classList.toggle("active");
-          var content = this.nextElementSibling;
-          if (content.style.display === "list-item") {
-            content.style.display = "none";
-          } else {
-            content.style.display = "list-item";
-          }
-        });
-      }
 }
 
+let myCategories = "";
+
 const loadCategories = (myCategories, option) => {
-    let arrayCategories = myCategories.categories;
+    let arrayCategories = myCategories;
     let sortedCategories = [];
     if (option === "m") {
         sortedCategories = arrayCategories.filter(categories => categories.gender.includes("m"));
@@ -91,9 +39,8 @@ const loadCategories = (myCategories, option) => {
                       <button class="prev-btn">←</button>
                       <img src="${images[currentImageIndex]}" class="border border-warning rounded" alt="${article}" height="300px" width="200px">
                       <button class="next-btn">→</button>
-                      <p class="lead">${description}</p>
                       <p class="caption">${captions[currentImageIndex]}</p>
-                      <button class="add-btn" type="button">Add To Cart</button>
+                      <p class="lead">${description}</p>
                   </div>
               </div>
           </div>`;
@@ -102,7 +49,6 @@ const loadCategories = (myCategories, option) => {
         let captionElement = showCategories.querySelector(".caption");
         let prevBtn = showCategories.querySelector(".prev-btn");
         let nextBtn = showCategories.querySelector(".next-btn");
-        let addBtn = showCategories.querySelector(".add-btn");
         
         prevBtn.addEventListener("click", () => {
             currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
@@ -115,64 +61,55 @@ const loadCategories = (myCategories, option) => {
             imgElement.src = images[currentImageIndex];
             captionElement.textContent = captions[currentImageIndex];
         });
-
-        addBtn.addEventListener("click", () => {
-          const items = document.getElementById('items');
-          const newItem = document.createElement('li');
-          newItem.textContent = captionElement.textContent;
-          items.appendChild(newItem);
-        })
         
         catalog.appendChild(showCategories);
     });
 };
 
-
-const items = document.getElementById('items');
-function showCart() {
-    const items = document.getElementById('items');
-    if (document.getElementById('items').hidden == true) {
-        document.getElementById('items').hidden=false;
-    }
-    else {
-        document.getElementById('items').hidden = true;
-    }
-}
-
-function addToCart() {
-    fetch('./data.json')
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        const items = document.getElementById('items');
-        const newItem = document.createElement('li');
-        newItem.textContent = "New Item: " + data.captionElement;
-        items.appendChild(newItem);
-    })
-    .catch(function (err) {
-        console.log('error: ' + err);
-    });
+function fetchData(option) {
+    fetch("http://localhost:8081/listCategories")
+      .then((response) => response.json())
+      .then((data) => {
+        myCategories = data;
+        console.log(myCategories);
+        loadCategories(myCategories, option);
+      })
+      .catch((err) => console.log("error:" + err));
 }
 
 function showMens() {
-    fetch("./data.json")
-      .then((response) => response.json())
-      .then((myCategories) => loadCategories(myCategories, "m"))
-      .catch((err) => console.log("Error :" + err));
+    let header = document.getElementById("header");
+    header.innerHTML = `
+        <div class="row">
+            <div class="col text-center mx-3">
+                <h1 class="display-7 mt-md-7" style="font-family:'Verdana'"><strong>Men's Clothing</strong></h1>
+            </div>
+        </div>`;
+    fetchData("m");
 }
   
 function showWomens() {
-    fetch("./data.json")
-      .then((response) => response.json())
-      .then((myCategories) => loadCategories(myCategories, "w"))
-      .catch((err) => console.log("Error :" + err));
+    let header = document.getElementById("header");
+    header.innerHTML = `
+        <div class="row">
+            <div class="col text-center mx-3">
+                <h1 class="display-7 mt-md-7" style="font-family:'Verdana'"><strong>Women's Clothing</strong></h1>
+            </div>
+        </div>`;
+    fetchData("w");
 }
 
 function showAbout() {
     let today = new Date();
     let options = { year: 'numeric', month: 'long', day: 'numeric' };
     let formattedDate = today.toLocaleDateString('en-US', options);
+    let header = document.getElementById("header");
+    header.innerHTML = `        
+        <div class="row">
+            <div class="col text-center mx-3">
+                <h1 class="display-7 mt-md-7" style="font-family:'Verdana'"><strong>Meet Today's Team - ${formattedDate}</strong></h1>
+            </div>
+        </div>`
     let about = document.getElementById("col");
     about.innerHTML = `
         <div class="border rounded" style="background-color: hwb(223 7% 64%);">
