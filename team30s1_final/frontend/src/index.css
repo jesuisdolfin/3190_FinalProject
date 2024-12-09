@@ -1,0 +1,98 @@
+header {
+    background-color: hwb(223 7% 64%);
+    color: #fff;
+    padding: 30px 0;
+    font-family: "Verdana", monospace;
+  }
+  
+  header a:hover {
+    color: #f13f2e;
+  }
+  
+  header svg:hover {
+    color: #f13f2e;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav li {
+    margin: 0 20px;
+    font-family: "Verdana", monospace;
+    font-size: 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: hwb(223 7% 64%);
+    color: #fff;
+    font-family: "Verdana", monospace;
+  }
+  
+  footer a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  footer a:hover {
+    color: #f13f2e;
+  }
+  
+  h1 {
+    font-family: "Verdana", monospace;
+  }
+  
+  .custom_color {
+    color: black !important;
+  }
+  
+/* Dark grey button style */
+.btn-dark-grey {
+  background-color: #343a40;  /* Dark grey color */
+  color: white;  /* White text (including the arrow) */
+  border: 2px solid transparent;  /* No border initially */
+  transition: all 0.3s ease;  /* Smooth transition for hover effect */
+}
+
+/* Hover effect: brighter grey, white border */
+.btn-dark-grey:hover {
+  background-color: #495057;  /* Slightly brighter grey */
+  border-color: white;  /* White border on hover */
+}
+
+/* Ensure the arrow stays white */
+.btn-dark-grey .btn-arrow {
+  color: white;  /* Make sure the arrow is always white */
+}
+
+/* Optional: Adjust the style for the next/prev buttons */
+.slideshow-btn {
+  background-color: #343a40;
+  color: white;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.slideshow-btn:hover {
+  background-color: #495057;
+  border-color: white;
+}
+
+/* Ensure the arrow stays white even when the button is hovered */
+.slideshow-btn .btn-arrow {
+  color: white;
+}
+
+
+  
