@@ -1,0 +1,102 @@
+header {
+    background-color: hwb(223 7% 64%);
+    color: #fff;
+    padding: 30px 0;
+    font-family: "Verdana", monospace;
+  }
+  
+  header a:hover {
+    color: #f13f2e;
+  }
+  
+  header svg:hover {
+    color: #f13f2e;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav li {
+    margin: 0 20px;
+    font-family: "Verdana", monospace;
+    font-size: 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: hwb(223 7% 64%);
+    color: #fff;
+    font-family: "Verdana", monospace;
+  }
+  
+  footer a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  footer a:hover {
+    color: #f13f2e;
+  }
+  
+  h1 {
+    font-family: "Verdana", monospace;
+  }
+  
+  .custom_color {
+    color: black !important;
+  }
+  
+.btn-custom {
+  background-color: #212529; /* Light gray */
+  color: white; /* Dark text */
+  border-radius: 5px; /* Slightly rounded corners */
+  padding: 10px 15px;
+  font-size: 16px;
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.btn-custom:hover {
+  background-color: #545b62; /* Slightly darker gray */
+  color: #000; /* Darker text */
+  border-color: white; /* Slightly darker border */
+}
+
+.btn-custom:active {
+  background-color: #d0d0d0; /* Even darker gray */
+  border-color: #aaa;
+  transform: scale(0.98); /* Slight press effect */
+}
+
+.btn-dark-grey {
+  background-color: #6c757d; /* Dark grey */
+  color: white;
+  border: 1px solid #6c757d;
+  border-radius: 0.25rem; /* Same as Bootstrap */
+  padding: 0.375rem 0.75rem; /* Same as Bootstrap */
+  font-size: 1rem;
+  transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-dark-grey:hover {
+  background-color: #5a6268; /* Darker grey for hover */
+  border-color: #545b62; /* Darker border for hover */
+}
+
+.btn-dark-grey:active {
+  background-color: #545b62; /* Even darker grey */
+  border-color: #4e555b;
+}
+
+
+  
