@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./index.css"
+import "./index.css";
 
 const Women = ({ addToCart }) => {
   const [categories, setCategories] = useState([]);
@@ -45,11 +45,7 @@ const Women = ({ addToCart }) => {
         }}
       >
         {categories.map((category, index) => (
-          <CategoryCard
-            key={index}
-            category={category}
-            addToCart={addToCart}
-          />
+          <CategoryCard key={index} category={category} addToCart={addToCart} />
         ))}
       </div>
     </div>
@@ -79,7 +75,7 @@ const CategoryCard = ({ category, addToCart }) => {
       description: category.description,
       image: images[currentImageIndex],
       price: prices[currentImageIndex],
-      quantity: 1, // Default quantity is 1
+      quantity: 1,
     };
 
     addToCart(cartItem);
@@ -130,15 +126,12 @@ const CategoryCard = ({ category, addToCart }) => {
             </button>
           </div>
           <div className="text-center mt-2">
-            
-            <p className="caption">{captions[currentImageIndex]} - ${prices[currentImageIndex]}</p>
+            <p className="caption">
+              {captions[currentImageIndex]} - ${prices[currentImageIndex]}
+            </p>
             <p className="lead">{category.description}</p>
 
-            {/* Add to Cart Button */}
-            <button
-              className="btn-dark-grey"
-              onClick={handleAddToCart}
-            >
+            <button className="btn-dark-grey" onClick={handleAddToCart}>
               Add to Cart
             </button>
           </div>

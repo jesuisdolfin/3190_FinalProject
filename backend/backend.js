@@ -17,15 +17,44 @@ const db = client.db(dbName);
 app.get("/listCategories", async (req, res) => {
   await client.connect().then(() => {
     console.log("Connected to MongoDB");
-  })
+  });
   try {
     const query = {};
-    const results = await db.collection("articles").find(query).limit(100).toArray();
+    const results = await db
+      .collection("articles")
+      .find(query)
+      .limit(100)
+      .toArray();
     console.log(results);
     res.status(200);
     res.send(results);
   } catch (err) {
     console.error("Failed to connect to MongoDB", err);
+  }
+});
+
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // Connect to MongoDB
+    await client.connect();
+    console.log("Connected to MongoDB");
+
+    const collection = db.collection("logins");
+    const result = await collection.insertOne({
+      username,
+      password,
+      timestamp: new Date(),
+    });
+
+    // Success response
+    res.status(200).send({ message: "Login stored successfully" });
+  } catch (err) {
+    console.error("Error storing login:", err);
+    res.status(500).send({ error: "Failed to store login" });
+  } finally {
+    await client.close();
   }
 });
 

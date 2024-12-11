@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -10,16 +10,30 @@ import About from "./About";
 import Men from "./Men";
 import Women from "./Women";
 import Navbar from "./Navbar";
-import Shop from "./Shopping"; // Updated to use the modified Shop component
+import Shop from "./Shopping";
+import Authentication from "./Login";
 
 const App = () => {
-  const [cart, setCart] = useState([]); // Cart state to manage items
-  const [cartTotal, setCartTotal] = useState(0); // To calculate the total of cart items
-  const [showCart, setShowCart] = useState(false); // To toggle the cart visibility
+  const [cart, setCart] = useState([]);
+  const [cartTotal, setCartTotal] = useState(0);
+  const [showCart, setShowCart] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [userRole, setUserRole] = useState(null);
+  const [username, setUsername] = useState("");
 
   // Toggle cart visibility
   const toggleCart = () => {
     setShowCart((prevState) => !prevState);
+  };
+
+  // Toggle login modal visibility
+  const toggleLogin = () => {
+    console.log("Toggling login modal...");
+    setShowLogin((prevState) => !prevState);
+  };
+
+  const handleLogin = (username) => {
+    setUsername(username);
   };
 
   // Add item to the cart
@@ -28,7 +42,6 @@ const App = () => {
       (cartItem) => cartItem.article === item.article
     );
     if (itemExists) {
-      // If the item already exists, increase its quantity
       setCart(
         cart.map((cartItem) =>
           cartItem.article === item.article
@@ -37,7 +50,6 @@ const App = () => {
         )
       );
     } else {
-      // If the item doesn't exist, add it with quantity 1
       setCart([...cart, { ...item, quantity: 1 }]);
     }
   };
@@ -59,18 +71,25 @@ const App = () => {
   return (
     <Router>
       <div className="d-flex flex-column vh-100">
-        <Navbar toggleCart={toggleCart} />
+        <Navbar toggleCart={toggleCart} toggleLogin={toggleLogin} />
+        <Authentication
+          showLogin={showLogin}
+          toggleLogin={toggleLogin}
+          setUserRole={setUserRole}
+        />
+        <div>
+          <p>User Role: {userRole}</p>
+        </div>
 
         <div
           className="flex-grow-1 bg-light p-4"
           style={{ marginTop: "70px", marginBottom: "70px" }}
         >
-          {/* Conditionally render the Shop component based on the `showCart` state */}
           {showCart && (
             <div
               style={{
                 position: "fixed",
-                top: "70px", // Position it right under the navbar
+                top: "70px",
                 right: 0,
                 left: 0,
                 zIndex: 1000,
@@ -80,7 +99,7 @@ const App = () => {
                 cart={cart}
                 cartTotal={cartTotal}
                 removeFromCart={removeFromCart}
-                showCart={showCart} // Pass showCart as a prop to Shop
+                showCart={showCart}
               />
             </div>
           )}

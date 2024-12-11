@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ toggleCart }) => {
+const Navbar = ({ toggleCart, toggleLogin }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container">
+        <button onClick={toggleLogin}>Login</button>
         <button
           className="navbar-toggler"
           type="button"
@@ -17,7 +18,7 @@ const Navbar = ({ toggleCart }) => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav mx-auto"> {/* Centered menu items */}
+          <ul className="navbar-nav mx-auto">
             <li className="nav-item">
               <Link className="nav-link" to="/about">
                 About
@@ -35,11 +36,10 @@ const Navbar = ({ toggleCart }) => {
             </li>
           </ul>
           <div className="ms-auto">
-            {/* Shopping Cart Button */}
             <button
               className="btn btn-outline-light d-flex align-items-center"
               style={{ padding: "0.15rem" }}
-              onClick={toggleCart} // Call the toggle function here
+              onClick={toggleCart}
             >
               <img
                 src="/images/carticon.png"
