@@ -5,7 +5,7 @@ const Navbar = ({ toggleCart, toggleLogin }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container">
-        <button onClick={toggleLogin}>Login</button>
+        <button onClick={toggleLogin}>Who's Shopping?</button>
         <button
           className="navbar-toggler"
           type="button"
@@ -32,6 +32,11 @@ const Navbar = ({ toggleCart, toggleLogin }) => {
             <li className="nav-item">
               <Link className="nav-link" to="/women">
                 Women
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contactus">
+                Contact Us
               </Link>
             </li>
           </ul>

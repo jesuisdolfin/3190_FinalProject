@@ -12,6 +12,9 @@ import Women from "./Women";
 import Navbar from "./Navbar";
 import Shop from "./Shopping";
 import Authentication from "./Login";
+import ContactUs from "./ContactUs";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -149,6 +152,7 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/men" element={<Men addToCart={addToCart} />} />
               <Route path="/women" element={<Women addToCart={addToCart} />} />
+              <Route path="/contactus" element={<ContactUs />} />
             </Routes>
           </div>
         </div>
