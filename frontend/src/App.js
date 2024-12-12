@@ -24,6 +24,7 @@ const App = () => {
   const [userRole, setUserRole] = useState(null);
   const [username, setUsername] = useState("");
 
+  const resetCart = () => setCart([]);
   // Toggle cart visibility
   const toggleCart = () => {
     setShowCart((prevState) => !prevState);
@@ -103,6 +104,8 @@ const App = () => {
                 cartTotal={cartTotal}
                 removeFromCart={removeFromCart}
                 showCart={showCart}
+                resetCart={resetCart}
+                toggleCart={toggleCart}
               />
             </div>
           )}

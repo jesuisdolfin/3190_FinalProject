@@ -1,7 +1,13 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Shop = ({ cart, cartTotal, removeFromCart, showCart }) => {
+const Shop = ({ cart, cartTotal, removeFromCart, showCart, resetCart, toggleCart }) => {
+  const handleCheckout = () => {
+    alert(`Your total is $${cartTotal}. Thank you for shopping!`);
+    resetCart(); // Resets the cart
+    toggleCart(); // Closes the cart view
+  };
+
   const cartItems = cart.map((el, index) => (
     <div
       className="d-flex align-items-center justify-content-between py-2"
@@ -55,6 +61,12 @@ const Shop = ({ cart, cartTotal, removeFromCart, showCart }) => {
             </div>
 
             {cartItems}
+            <button
+              className="btn btn-dark w-100 mt-3"
+              onClick={handleCheckout}
+            >
+              Checkout
+            </button>
           </div>
         </div>
       )}
